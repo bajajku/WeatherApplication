@@ -10,6 +10,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import sheridan.bajajku.assignment4.ui.navigation.BramptonDestination
+import sheridan.bajajku.assignment4.ui.navigation.MississaugaDestination
+import sheridan.bajajku.assignment4.ui.navigation.OakvilleDestination
 
 private data class NavigationItemContent(
     val route: String,

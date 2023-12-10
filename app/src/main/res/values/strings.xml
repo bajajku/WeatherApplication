@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">assignment4</string>
+
+    <string name="nav_oakville_title">Trafalgar Campus</string>
+    <string name="nav_Brampton_title">Davis Campus</string>
+    <string name="nav_Mississauga_title">HMC Campus</string>
 </resources>
