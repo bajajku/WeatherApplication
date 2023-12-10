@@ -1,4 +1,4 @@
-package sheridan.bajajku.assignment4.ui.theme.common
+package sheridan.bajajku.assignment4.ui.common
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
