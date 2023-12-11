@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import sheridan.bajajku.assignment4.WeatherViewModel
 import sheridan.bajajku.assignment4.ui.common.WeatherBottomBar
 import sheridan.bajajku.assignment4.ui.common.WeatherTopAppBar
@@ -62,16 +63,16 @@ fun OakvilleScreen (
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("Trafalgar Campus")
-            Text("Oakville, CA")
+            Text("Trafalgar Campus", fontSize=24.sp)
+            Text("Oakville, CA", fontSize=24.sp)
             Spacer(modifier = Modifier.height(24.dp))
             if (weather != null) {
-                Text("Temperature: ${weather!!.main.temp}")
-                Text("Feels Like: ${weather!!.main.feels_like}")
-                Text("Minimum Temperature: ${weather!!.main.temp_min}")
-                Text("Maximum Temperature: ${weather!!.main.temp_max}")
-                Text("Pressure: ${weather!!.main.pressure}")
-                Text("Humidity: ${weather!!.main.humidity}")
+                Text("Temperature: ${weather!!.main.temp}", fontSize=20.sp)
+                Text("Feels Like: ${weather!!.main.feels_like}", fontSize=20.sp)
+                Text("Minimum Temperature: ${weather!!.main.temp_min}", fontSize=20.sp)
+                Text("Maximum Temperature: ${weather!!.main.temp_max}", fontSize=20.sp)
+                Text("Pressure: ${weather!!.main.pressure}", fontSize=20.sp)
+                Text("Humidity: ${weather!!.main.humidity}", fontSize=20.sp)
             } else {
                 Text("Loading...")
             }
