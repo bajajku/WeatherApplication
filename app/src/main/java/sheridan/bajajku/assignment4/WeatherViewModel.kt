@@ -20,7 +20,7 @@ class WeatherViewModel @Inject constructor(
 
     fun getWeather(location: String) {
         viewModelScope.launch {
-            val apiKey = "5386e68ee61b73e93752a3fefb699178"
+            val apiKey = "b28c8dccf2bd6d97284e6bef6aa2674b"
             val response = weatherService.getWeather(location, apiKey)
             _weather.value = response.body()
         }

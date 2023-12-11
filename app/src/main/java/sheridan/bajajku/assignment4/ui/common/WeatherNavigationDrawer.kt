@@ -1,30 +1,25 @@
 package sheridan.bajajku.assignment4.ui.common
 
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material3.Icon
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.Text
+import androidx.compose.material3.NavigationDrawerItem
+import androidx.compose.material3.NavigationRail
+import androidx.compose.material3.NavigationRailItem
+import androidx.compose.material3.PermanentNavigationDrawer
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
 import sheridan.bajajku.assignment4.ui.navigation.BramptonDestination
 import sheridan.bajajku.assignment4.ui.navigation.MississaugaDestination
 import sheridan.bajajku.assignment4.ui.navigation.OakvilleDestination
 
-data class NavigationItemContent(
-    val route: String,
-    val icon: ImageVector,
-    val text: String
-)
-
 @Composable
-fun WeatherBottomBar(
+fun WeatherNavigationDrawer(
     currentRoute: String,
-    onTabPressed: (String) -> Unit,
-    modifier: Modifier = Modifier
+    onTabPressed: (String) -> Unit
 ) {
     val navigationItemContentList = listOf(
         NavigationItemContent(
@@ -43,20 +38,19 @@ fun WeatherBottomBar(
             text = "HMC"
         )
     )
-
-    NavigationBar(modifier = modifier) {
-        for (navItem in navigationItemContentList) {
-            NavigationBarItem(
-                selected = currentRoute == navItem.route,
-                onClick = { onTabPressed(navItem.route) },
-                icon = {
-                    Icon(
-                        imageVector = navItem.icon,
-                        contentDescription = navItem.text
+        PermanentNavigationDrawer(
+            drawerContent = {
+                navigationItemContentList.forEach { item ->
+                    NavigationDrawerItem(
+                        icon = { Icon(item.icon, contentDescription = null) },
+                        selected = currentRoute == item.route,
+                        onClick = { onTabPressed(item.route) },
+                        label = { item.text }
                     )
-                },
-                label = { Text(text = navItem.text) }
-            )
-        }
-    }
+                }
+            },
+            content = {
+                // Other content
+            }
+        )
 }

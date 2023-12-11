@@ -1,6 +1,10 @@
 package sheridan.bajajku.assignment4.ui.navigation
 
+import android.app.Activity
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -10,15 +14,19 @@ import sheridan.bajajku.assignment4.ui.AppScreens.BramptonScreen
 import sheridan.bajajku.assignment4.ui.AppScreens.MississaugaScreen
 import sheridan.bajajku.assignment4.ui.AppScreens.OakvilleScreen
 
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
 fun WeatherNavHost(navController: NavHostController) {
+    val widthSizeClass = calculateWindowSizeClass(LocalContext.current as Activity).widthSizeClass
+
     NavHost(navController, startDestination = OakvilleDestination.route) {
         composable(route = OakvilleDestination.route){
             val viewModel: WeatherViewModel = hiltViewModel()
             OakvilleScreen(
                 location = "Oakville,CA",
                 viewModel = viewModel,
-                onTabPressed = tabNavigate(navController)
+                onTabPressed = tabNavigate(navController),
+                widthSize = widthSizeClass
             )
         }
         composable(route = BramptonDestination.route) {
@@ -27,7 +35,8 @@ fun WeatherNavHost(navController: NavHostController) {
                 location = "Brampton, CA",
                 viewModel = viewModel,
                 onTabPressed = tabNavigate(navController),
-                navigateBack = { navController.popBackStack() }
+                navigateBack = { navController.popBackStack() },
+                widthSize = widthSizeClass
             )
         }
         composable(route = MississaugaDestination.route) {
@@ -36,7 +45,9 @@ fun WeatherNavHost(navController: NavHostController) {
                 location = "Mississauga, CA",
                 viewModel = viewModel,
                 onTabPressed = tabNavigate(navController),
-                navigateBack = { navController.popBackStack() })
+                navigateBack = { navController.popBackStack() },
+                widthSize = widthSizeClass
+            )
         }
     }
 }
